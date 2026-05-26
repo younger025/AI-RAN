@@ -1,0 +1,47 @@
+scenario_id: jamming_self_evolution
+name: Jamming and Self-Evolution
+description: A jammer appears and the system switches to robust anti-jamming communication mode.
+
+total_steps: 120
+step_interval_s: 0.1
+
+channel:
+  mode: jamming_spike
+  initial_snr_db: 15
+  final_snr_db: 2
+  seed: 11
+  noise_std_db: 0.5
+
+nodes:
+  - node_id: gnb_1
+    node_type: gNB
+    name: gNB
+    position:
+      x: 0
+      y: 0
+    tx_power_dbm: 20
+
+  - node_id: ue_1
+    node_type: UE
+    name: UE-1
+    position:
+      x: 130
+      y: 20
+    tx_power_dbm: 10
+
+  - node_id: jammer_1
+    node_type: jammer
+    name: Jammer
+    position:
+      x: 70
+      y: 80
+    tx_power_dbm: 30
+
+links:
+  - link_id: link_gnb_ue1
+    source_node_id: gnb_1
+    target_node_id: ue_1
+    active: true
+
+link_offsets_db:
+  link_gnb_ue1: 0

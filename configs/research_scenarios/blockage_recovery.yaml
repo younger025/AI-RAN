@@ -1,0 +1,42 @@
+scenario_id: blockage_recovery
+name: Blockage and Recovery
+description: The link experiences sudden blockage and then partially recovers.
+
+total_steps: 120
+step_interval_s: 0.1
+
+channel:
+  mode: blockage
+  initial_snr_db: 17
+  final_snr_db: 0
+  seed: 21
+  noise_std_db: 0.5
+
+nodes:
+  - node_id: gnb_1
+    node_type: gNB
+    name: gNB
+    position:
+      x: 0
+      y: 0
+    tx_power_dbm: 20
+
+  - node_id: ue_1
+    node_type: UE
+    name: UE-1 Mobile
+    position:
+      x: 100
+      y: 30
+    tx_power_dbm: 10
+    mobility_enabled: true
+    velocity_x: 1.5
+    velocity_y: 0.5
+
+links:
+  - link_id: link_gnb_ue1
+    source_node_id: gnb_1
+    target_node_id: ue_1
+    active: true
+
+link_offsets_db:
+  link_gnb_ue1: 0
