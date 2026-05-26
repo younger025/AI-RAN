@@ -35,8 +35,12 @@ def export_plotly_html(fig, path: str | Path):
 def export_plotly_png(fig, path: str | Path):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    fig.write_image(str(path))
-    return path
+    try:
+        import kaleido
+        fig.write_image(str(path))
+        return path
+    except Exception:
+        return None
 
 
 def generate_experiment_summary(df, scenario_name: str = "Unknown Scenario") -> str:

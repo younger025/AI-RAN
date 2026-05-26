@@ -16,7 +16,8 @@ venv*/
 *.swo
 
 # Streamlit
-.streamlit/
+.streamlit/secrets.toml
+.streamlit/cache/
 
 # OS
 Thumbs.db
@@ -25,3 +26,6 @@ debug.log
 
 # Packaging
 AI_RAN_Demo_*.zip
+
+# Cleaned directories
+docs/
