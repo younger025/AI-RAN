@@ -21,6 +21,7 @@ venv*/
 # OS
 Thumbs.db
 .DS_Store
+debug.log
 
 # Packaging
 AI_RAN_Demo_*.zip
