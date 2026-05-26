@@ -1,0 +1,67 @@
+scenario_id: multi_node_cell
+name: Multi-Node RAN Mini Cell
+description: One gNB serves multiple UEs with different channel qualities.
+
+total_steps: 100
+step_interval_s: 0.1
+
+channel:
+  mode: sinusoidal
+  initial_snr_db: 16
+  final_snr_db: 4
+  seed: 7
+  noise_std_db: 0.6
+
+nodes:
+  - node_id: gnb_1
+    node_type: gNB
+    name: gNB
+    position:
+      x: 0
+      y: 0
+    tx_power_dbm: 20
+
+  - node_id: ue_1
+    node_type: UE
+    name: UE-1 Near
+    position:
+      x: 80
+      y: 30
+    tx_power_dbm: 10
+
+  - node_id: ue_2
+    node_type: UE
+    name: UE-2 Mid
+    position:
+      x: 170
+      y: -40
+    tx_power_dbm: 10
+
+  - node_id: ue_3
+    node_type: UE
+    name: UE-3 Edge
+    position:
+      x: 280
+      y: 70
+    tx_power_dbm: 10
+
+links:
+  - link_id: link_gnb_ue1
+    source_node_id: gnb_1
+    target_node_id: ue_1
+    active: true
+
+  - link_id: link_gnb_ue2
+    source_node_id: gnb_1
+    target_node_id: ue_2
+    active: true
+
+  - link_id: link_gnb_ue3
+    source_node_id: gnb_1
+    target_node_id: ue_3
+    active: true
+
+link_offsets_db:
+  link_gnb_ue1: 3
+  link_gnb_ue2: 0
+  link_gnb_ue3: -4
